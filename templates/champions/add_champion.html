@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Adicionar Campeão - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Cadastro de Campeão</b>
+<br />
+<br />
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <label>Nome</label>
+    <br />
+    {{ form.name }}
+    <br />
+    <br />
+    <label>Pick rate (%)</label>
+    <br />
+    {{ form.pick_rate }}
+    <br />
+    <br />
+    <label>Ban rate (%)</label>
+    <br />
+    {{ form.ban_rate }}
+    <br />
+    <br />
+    <label>Ícone</label>
+    <br />
+    {{ form.icon }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+ 
+{% endblock body %}
