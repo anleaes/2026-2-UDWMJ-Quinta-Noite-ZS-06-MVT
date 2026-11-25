@@ -10,7 +10,22 @@
     <title>{% block title %}CampeonatoApp{% endblock title %}</title>
 </head>
 <body>
-
+    <br />
+    <a href="{% url 'core:home' %}" ><button onclick="mudarCor()">Início</button></a>
+    <a href="{% url 'champions:list_champions' %}" ><button onclick="mudarCor()">Campeões</button></a>
+    <a href="#" ><button>Times</button></a>
+    <a href="#" ><button>Jogadores</button></a>
+    <a href="#" ><button>Técnicos</button></a>
+    <a href="#" ><button>Participações</button></a>
+    <a href="#" ><button>Torneios</button></a>
+    <a href="#" ><button>Inscrições</button></a>
+    <a href="#" ><button>Fases</button></a>
+    <a href="#" ><button>Partidas</button></a>
+    <a href="#" ><button>Jogos</button></a>
+    <a href="#" ><button>Drafts</button></a>
+    <a href="#" ><button>Estatísticas</button></a>
+    <br />
+    
     {% block body %}
     
     {% endblock body %}
