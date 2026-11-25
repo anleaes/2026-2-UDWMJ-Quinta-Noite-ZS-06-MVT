@@ -4,3 +4,5 @@ Wallet_campeonatoappdb/
 /media/*
 /apps/core/__pycache__/*
 /apps/core/migrations/*
+/apps/champions/__pycache__/*
+/apps/champions/migrations/*
