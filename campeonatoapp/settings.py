@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'champions.apps.ChampionsConfig',
     'persons.apps.PersonsConfig',
     'players.apps.PlayersConfig',
+    'teams.apps.TeamsConfig',
 ]
 
 MIDDLEWARE = [
