@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar Jogador - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+<b>Adicionar Jogador</b>
+<br />
+<br />
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Nome</label>
+    <br />
+    {{ form.first_name }}
+    <br />
+    <br />
+    <label>Sobrenome</label>
+    <br />
+    {{ form.last_name }}
+    <br />
+    <br />
+    <label>Data de Nascimento</label>
+    <br />
+    {{ form.birth_date }}
+    <br />
+    <br />
+    <label>Telefone</label>
+    <br />
+    {{ form.phone }}
+    <br />
+    <br />
+    <label>Email</label>
+    <br />
+    {{ form.email }}
+    <br />
+    <br />
+    <label>Nickname</label>
+    <br />
+    {{ form.nickname }}
+    <br />
+    <br />
+    <label>Funcao</label>
+    <br />
+    {{ form.role }}
+    <br />
+    <br />
+    <label>Titular</label>
+    <br />
+    {{ form.is_starter }}
+    <br />
+    <br />
+    <label>Foto</label>
+    <br />
+    {{ form.photo }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+
+{% endblock body %}
