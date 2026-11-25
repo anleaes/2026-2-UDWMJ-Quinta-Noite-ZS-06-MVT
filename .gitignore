@@ -1,0 +1,6 @@
+/campeonatoapp/__pycache__/*
+.env
+Wallet_campeonatoappdb/
+/media/*
+/apps/core/__pycache__/*
+/apps/core/migrations/*
