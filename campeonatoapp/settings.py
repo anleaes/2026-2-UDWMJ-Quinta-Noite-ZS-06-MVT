@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'champions.apps.ChampionsConfig',
+    'persons.apps.PersonsConfig',
 ]
 
 MIDDLEWARE = [
