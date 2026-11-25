@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Times - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+
+<br />
+<a href="{% url 'teams:add_team' %}">Cadastro de novo time</a>
+<br />
+<br />
+<b>Lista de Times</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sigla</th>
+            <th>Data de Criação</th>
+            <th>Logo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for team in teams %}
+        <tr>
+            <td>{{ team.id }}</td>
+            <td>{{ team.name }}</td>
+            <td>{{ team.tag }}</td>
+            <td>{{ team.created_at }}</td>
+            <td>
+                {% if team.logo %}<img src="{{ team.logo.url }}" width="80">{% endif %}
+            </td>
+            <td>
+                <a href="{% url 'teams:edit_team' team.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'teams:delete_team' team.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}
