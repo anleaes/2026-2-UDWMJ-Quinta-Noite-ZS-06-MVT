@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from registrations.models import Registration
+from stages.models import Stage
+from matches.models import Match
 from .forms import TournamentForm
 from .models import Tournament
 
@@ -41,3 +44,25 @@ def delete_tournament(request, id_tournament):
     tournament = Tournament.objects.get(id=id_tournament)
     tournament.delete()
     return redirect('tournaments:list_tournaments')
+
+def standings(request, id_tournament):
+    template_name = 'tournaments/standings.html'
+    tournament = get_object_or_404(Tournament, id=id_tournament)
+    table = []
+    registrations = Registration.objects.filter(tournament=tournament, status='CONF')
+    for registration in registrations:
+        wins = 0
+        losses = 0
+        for stage in Stage.objects.filter(tournament=tournament):
+            for match in Match.objects.filter(stage=stage, status='FIN'):
+                if match.winner == registration.team:
+                    wins += 1
+                elif match.team_a == registration.team or match.team_b == registration.team:
+                    losses += 1
+        table.append({'team': registration.team, 'wins': wins, 'losses': losses})
+    table = sorted(table, key=lambda row: row['wins'], reverse=True)
+    context = {
+        'tournament': tournament,
+        'table': table,
+    }
+    return render(request, template_name, context)

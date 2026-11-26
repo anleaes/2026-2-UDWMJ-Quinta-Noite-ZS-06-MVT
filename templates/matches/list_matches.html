@@ -26,6 +26,8 @@
             <th>Vencedor</th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -44,6 +46,13 @@
             </td>
             <td>
                 <a href="{% url 'matches:delete_match' match.id %}">Excluir</a>
+            </td>
+
+            <td>
+                <a href="{% url 'matches:view_match' match.id %}">Detalhes</a>
+            </td>
+            <td>
+                <a href="{% url 'matches:finish_match' match.id %}">Finalizar</a>
             </td>
         </tr>
         {% endfor %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Classificação - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+<b>Classificação: {{ tournament.name }}</b>
+<br />
+<br />
+<table border="1">
+    <thead>
+        <tr>
+            <th>Posição</th>
+            <th>Time</th>
+            <th>Vitórias</th>
+            <th>Derrotas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in table %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ row.team }}</td>
+            <td>{{ row.wins }}</td>
+            <td>{{ row.losses }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nenhum time confirmado neste torneio.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

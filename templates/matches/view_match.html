@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Detalhes da Partida - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Partida: {{ match.team_a }} x {{ match.team_b }}</b>
+<br />
+<br />
+<b>Fase:</b> {{ match.stage }}
+<br />
+<b>Data e hora:</b> {{ match.scheduled_at }}
+<br />
+<b>Formato:</b> {{ match.get_best_of_display }}
+<br />
+<b>Situação:</b> {{ match.get_status_display }}
+<br />
+<b>Placar da série:</b> {{ match.team_a }} {{ wins_a }} x {{ wins_b }} {{ match.team_b }}
+<br />
+<b>Vencedor:</b>
+    {% if match.winner %}
+        {{ match.winner }}
+    {% else %}
+        Ainda não definido
+    {% endif %}
+<br />
+<br />
+<a href="{% url 'matches:finish_match' match.id %}">Finalizar partida (calcular vencedor)</a>
+<br />
+<br />
+<b>Jogos</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Jogo</th>
+            <th>Duração (min)</th>
+            <th>Lado azul</th>
+            <th>Lado vermelho</th>
+            <th>Vencedor</th>
+            <th>Picks azul</th>
+            <th>Picks vermelho</th>
+            <th>Bans azul</th>
+            <th>Bans vermelho</th>
+            <th>Estatísticas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.game_number }}</td>
+            <td>{{ game.duration_minutes }}</td>
+            <td>{{ game.blue_team }}</td>
+            <td>{{ game.red_team }}</td>
+            <td>{{ game.winner }}</td>
+            <td>
+                {% for champion in game.draft.blue_picks.all %}{{ champion.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </td>
+            <td>
+                {% for champion in game.draft.red_picks.all %}{{ champion.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </td>
+            <td>
+                {% for champion in game.draft.blue_bans.all %}{{ champion.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </td>
+            <td>
+                {% for champion in game.draft.red_bans.all %}{{ champion.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </td>
+            <td>
+                <ul>
+                {% for stat in game.stats.all %}
+                    <li>{{ stat.player }} ({{ stat.champion }}): {{ stat.kills }}/{{ stat.deaths }}/{{ stat.assists }}</li>
+                {% empty %}
+                    <li>Sem estatísticas</li>
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="10">Nenhum jogo cadastrado para esta partida.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}
