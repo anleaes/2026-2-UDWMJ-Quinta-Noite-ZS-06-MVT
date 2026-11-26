@@ -13,6 +13,7 @@ urlpatterns = [
     path('participacoes/', include('memberships.urls', namespace='memberships')),
     path('torneios/', include('tournaments.urls', namespace='tournaments')),
     path('inscricoes/', include('registrations.urls', namespace='registrations')),
+    path('fases/', include('stages.urls', namespace='stages')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
