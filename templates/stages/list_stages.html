@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Fases - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'stages:add_stage' %}">Cadastro de nova fase</a>
+<br />
+<br />
+<b>Lista de Fases</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Ordem</th>
+            <th>Torneio</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stage in stages %}
+        <tr>
+            <td>{{ stage.id }}</td>
+            <td>{{ stage.name }}</td>
+            <td>{{ stage.get_stage_type_display }}</td>
+            <td>{{ stage.order }}</td>
+            <td>{{ stage.tournament }}</td>
+            <td>
+                <a href="{% url 'stages:edit_stage' stage.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'stages:delete_stage' stage.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}
