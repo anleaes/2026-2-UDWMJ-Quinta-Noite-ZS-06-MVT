@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Partidas - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'matches:add_match' %}">Cadastro de nova partida</a>
+<br />
+<br />
+<b>Lista de Partidas</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data e hora</th>
+            <th>Formato</th>
+            <th>Situação</th>
+            <th>Fase</th>
+            <th>Time A</th>
+            <th>Time B</th>
+            <th>Vencedor</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for match in matches %}
+        <tr>
+            <td>{{ match.id }}</td>
+            <td>{{ match.scheduled_at }}</td>
+            <td>{{ match.get_best_of_display }}</td>
+            <td>{{ match.get_status_display }}</td>
+            <td>{{ match.stage }}</td>
+            <td>{{ match.team_a }}</td>
+            <td>{{ match.team_b }}</td>
+            <td>{{ match.winner }}</td>
+            <td>
+                <a href="{% url 'matches:edit_match' match.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'matches:delete_match' match.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}
