@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import TeamForm
 from .models import Team
 
+@login_required(login_url='/contas/login/')
 def add_team(request):
     template_name = 'teams/add_team.html'
     context = {}

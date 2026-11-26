@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from drafts.views import update_champion_rates
 from .forms import MatchForm
 from .models import Match
- 
+
+@login_required(login_url='/contas/login/')
 def add_match(request):
     template_name = 'matches/add_match.html'
     context = {}

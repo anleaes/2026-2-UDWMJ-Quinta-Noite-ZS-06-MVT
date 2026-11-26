@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import ChampionForm
 from .models import Champion
-from django.shortcuts import render, redirect, get_object_or_404
-
  
+@login_required(login_url='/contas/login/')
 def add_champion(request):
     template_name = 'champions/add_champion.html'
     context = {}
