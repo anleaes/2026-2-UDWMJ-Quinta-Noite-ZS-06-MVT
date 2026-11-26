@@ -25,7 +25,12 @@
     <a href="{% url 'drafts:list_drafts' %}" ><button>Drafts</button></a>
     <a href="{% url 'playerstats:list_playerstats' %}" ><button>Estatísticas</button></a>
     <br />
-    
+    <br />
+    <form action="{% url 'players:search_players' %}" method="GET">
+        <input name="query" type="text" placeholder="Nickname do jogador" aria-label="Buscar">
+        <button type="submit">Buscar</button>
+    </form>
+
     {% block body %}
     
     {% endblock body %}
