@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar jogo - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+<b>Cadastro de Jogo</b>
+<br />
+<br />
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Numero do jogo</label>
+    <br />
+    {{ form.game_number }}
+    <br />
+    <br />
+    <label>Duração (minutos)</label>
+    <br />
+    {{ form.duration_minutes }}
+    <br />
+    <br />
+    <label>Replay</label>
+    <br />
+    {{ form.replay_file }}
+    <br />
+    <br />
+    <label>Partida</label>
+    <br />
+    {{ form.match }}
+    <br />
+    <br />
+    <label>Time lado azul</label>
+    <br />
+    {{ form.blue_team }}
+    <br />
+    <br />
+    <label>Time lado vermelho</label>
+    <br />
+    {{ form.red_team }}
+    <br />
+    <br />
+    <label>Vencedor</label>
+    <br />
+    {{ form.winner }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+ 
+{% endblock body %}
