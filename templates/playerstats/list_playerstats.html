@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Estatísticas - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'playerstats:add_playerstat' %}">Cadastro de nova estatística</a>
+<br />
+<br />
+<b>Lista de Estatísticas</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Abates</th>
+            <th>Mortes</th>
+            <th>Assistências</th>
+            <th>Jogo</th>
+            <th>Jogador</th>
+            <th>Campeão</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for playerstat in playerstats %}
+        <tr>
+            <td>{{ playerstat.id }}</td>
+            <td>{{ playerstat.kills }}</td>
+            <td>{{ playerstat.deaths }}</td>
+            <td>{{ playerstat.assists }}</td>
+            <td>{{ playerstat.game }}</td>
+            <td>{{ playerstat.player }}</td>
+            <td>{{ playerstat.champion }}</td>
+            <td>
+                <a href="{% url 'playerstats:edit_playerstat' playerstat.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'playerstats:delete_playerstat' playerstat.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}

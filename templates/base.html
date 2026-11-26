@@ -23,7 +23,7 @@
     <a href="{% url 'matches:list_matches' %}" ><button>Partidas</button></a>
     <a href="{% url 'games:list_games' %}" ><button>Jogos</button></a>
     <a href="{% url 'drafts:list_drafts' %}" ><button>Drafts</button></a>
-    <a href="#" ><button>Estatísticas</button></a>
+    <a href="{% url 'playerstats:list_playerstats' %}" ><button>Estatísticas</button></a>
     <br />
     
     {% block body %}
