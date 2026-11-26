@@ -10,6 +10,7 @@ urlpatterns = [
     path('jogadores/', include('players.urls', namespace='players')),
     path('times/', include('teams.urls', namespace='teams')),
     path('tecnicos/', include('coaches.urls', namespace='coaches')),
+    path('participacoes/', include('memberships.urls', namespace='memberships')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
