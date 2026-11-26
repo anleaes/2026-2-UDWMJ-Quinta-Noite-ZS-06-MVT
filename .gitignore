@@ -28,3 +28,5 @@ Wallet_campeonatoappdb/
 /apps/games/migrations/*
 /apps/drafts/__pycache__/*
 /apps/drafts/migrations/*
+/apps/playerstats/__pycache__/*
+/apps/playerstats/migrations/*
