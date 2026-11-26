@@ -22,3 +22,5 @@ Wallet_campeonatoappdb/
 /apps/registrations/migrations/*
 /apps/stages/__pycache__/*
 /apps/stages/migrations/*
+/apps/matches/__pycache__/*
+/apps/matches/migrations/*

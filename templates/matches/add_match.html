@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Adicionar Partida - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Cadastro de Partida</b>
+<br />
+<br />
+<form action="" method="POST">
+    {% csrf_token %}
+    <label>Data e hora</label>
+    <br />
+    {{ form.scheduled_at }}
+    <br />
+    <br />
+    <label>Formato</label>
+    <br />
+    {{ form.best_of }}
+    <br />
+    <br />
+    <label>Situação</label>
+    <br />
+    {{ form.status }}
+    <br />
+    <br />
+    <label>Fase</label>
+    <br />
+    {{ form.stage }}
+    <br />
+    <br />
+    <label>Time A</label>
+    <br />
+    {{ form.team_a }}
+    <br />
+    <br />
+    <label>Time B</label>
+    <br />
+    {{ form.team_b }}
+    <br />
+    <br />
+    <label>Vencedor</label>
+    <br />
+    {{ form.winner }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+ 
+{% endblock body %}
