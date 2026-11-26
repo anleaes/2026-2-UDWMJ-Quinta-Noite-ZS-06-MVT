@@ -9,6 +9,7 @@ urlpatterns = [
     path('campeoes/', include('champions.urls', namespace='champions')),
     path('jogadores/', include('players.urls', namespace='players')),
     path('times/', include('teams.urls', namespace='teams')),
+    path('tecnicos/', include('coaches.urls', namespace='coaches')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
