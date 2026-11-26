@@ -6,11 +6,11 @@ class Champion(models.Model):
     ban_rate = models.FloatField('Ban rate (%)', null=True, blank=True, default=0.0)
     icon = models.ImageField('Icone', upload_to='champions')
 
-class Meta:
-    verbose_name = 'Campeão'
-    verbose_name_plural = 'Campeões'
-    ordering = ['id']
+    class Meta:
+        verbose_name = 'Campeão'
+        verbose_name_plural = 'Campeões'
+        ordering = ['id']
 
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
