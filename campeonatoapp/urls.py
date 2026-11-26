@@ -18,6 +18,7 @@ urlpatterns = [
     path('jogos/', include('games.urls', namespace='games')),
     path('drafts/', include('drafts.urls', namespace='drafts')),
     path('estatisticas/', include('playerstats.urls', namespace='playerstats')),
+    path('contas/', include('accounts.urls', namespace='accounts')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

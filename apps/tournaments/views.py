@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from registrations.models import Registration
 from stages.models import Stage
 from matches.models import Match
 from .forms import TournamentForm
 from .models import Tournament
 
+@login_required(login_url='/contas/login/')
 def add_tournament(request):
     template_name = 'tournaments/add_tournament.html'
     context = {}

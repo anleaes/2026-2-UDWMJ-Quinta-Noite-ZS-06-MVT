@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import StageForm
 from .models import Stage
 
+@login_required(login_url='/contas/login/')
 def add_stage(request):
     template_name = 'stages/add_stage.html'
     context = {}

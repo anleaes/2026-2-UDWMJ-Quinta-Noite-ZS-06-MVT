@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import MembershipForm
 from .models import Membership
 
- 
+@login_required(login_url='/contas/login/')
 def add_membership(request):
     template_name = 'memberships/add_membership.html'
     context = {}

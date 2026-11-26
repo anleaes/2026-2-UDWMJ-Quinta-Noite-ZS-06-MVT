@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import PlayerForm
 from .models import Player
 
+@login_required(login_url='/contas/login/')
 def add_player(request):
     template_name = 'players/add_player.html'
     context = {}

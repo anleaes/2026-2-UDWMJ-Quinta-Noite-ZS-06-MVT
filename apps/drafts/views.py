@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import DraftForm
 from .models import Draft
 from champions.models import Champion
 
+@login_required(login_url='/contas/login/')
 def add_draft(request):
     template_name = 'drafts/add_draft.html'
     context = {}
