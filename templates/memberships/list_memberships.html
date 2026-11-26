@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar Participação {{ block.super }}
+
+{% endblock %}
+
+{% block body %}
+
+<br />
+    <a href="{% url 'memberships:add_membership' %}">Cadastro de nova Participação</a>
+<br />
+<br />
+<b>Lista de Participações</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data de entrada</th>
+            <th>Capitão</th>
+            <th>Time</th>
+            <th>Jogador</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for membership in memberships %}
+        <tr>
+            <td>{{ membership.id }}</td>
+            <td>{{ membership.joined_at }}</td>
+            <td>
+                {% if membership.is_captain %}
+                    Sim
+                {% else %}
+                    Não
+                {% endif %}
+            </td>
+            <td>{{ membership.team }}</td>
+            <td>{{ membership.player }}</td>
+            <td>
+                <a href="{% url 'memberships:edit_membership' membership.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'memberships:delete_membership' membership.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

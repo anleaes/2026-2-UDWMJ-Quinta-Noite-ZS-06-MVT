@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar Participação {{ block.super }}
+
+{% endblock %}
+
+{% block body %}
+
+<br />
+<b>Cadastro de Participação</b>
+<br />
+<br />
+<form action="" method="POST">
+    {% csrf_token %}
+    <label>Data de entrada</label>
+    <br />
+    {{ form.joined_at }}
+    <br />
+    <br />
+    <label>Capitão</label>
+    <br />
+    {{ form.is_captain }}
+    <br />
+    <br />
+    <label>Time</label>
+    <br />
+    {{ form.team }}
+    <br />
+    <br />
+    <label>Jogador</label>
+    <br />
+    {{ form.player }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+
+{% endblock body %}
