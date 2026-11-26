@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Torneios - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+
+<br />
+<a href="{% url 'tournaments:add_tournament' %}">Cadastro de novo torneio</a>
+<br />
+<br />
+<b>Lista de Torneios</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data de inicio</th>
+            <th>Data de término</th>
+            <th>Premiação</th>
+            <th>Situação</th>
+            <th>Regulamento</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tournament in tournaments %}
+        <tr>
+            <td>{{ tournament.id }}</td>
+            <td>{{ tournament.name }}</td>
+            <td>{{ tournament.description }}</td>
+            <td>{{ tournament.start_date }}</td>
+            <td>{{ tournament.end_date }}</td>
+            <td>{{ tournament.prize }}</td>
+            <td>{{ tournament.status }}</td>
+            <td>
+                {% if tournament.rules_doc %}
+                    <a href="{{ tournament.rules_doc.url }}" target="_blank">Ver Regulamento</a>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'tournaments:edit_tournament' tournament.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'tournaments:delete_tournament' tournament.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

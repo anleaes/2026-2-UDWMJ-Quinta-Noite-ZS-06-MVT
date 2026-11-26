@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar Torneio - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+<b>Adicionar Torneio</b>
+<br />
+<br />
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Nome</label>
+    <br />
+    {{ form.name }}
+    <br />
+    <br />
+    <label>Descrição</label>
+    <br />
+    {{ form.description }}
+    <br />
+    <br />
+    <label>Data de inicio</label>
+    <br />
+    {{ form.start_date }}
+    <br />
+    <br />
+    <label>Data de término</label>
+    <br />
+    {{ form.end_date }}
+    <br />
+    <br />
+    <label>Premiação</label>
+    <br />
+    {{ form.prize }}
+    <br />
+    <br />
+    <label>Situação</label>
+    <br />
+    {{ form.status }}
+    <br />
+    <br />
+    <label>Regulamento</label>
+    <br />
+    {{ form.rules_doc }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+
+{% endblock body %}
