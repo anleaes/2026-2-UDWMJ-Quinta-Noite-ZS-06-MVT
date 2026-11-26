@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tournaments.apps.TournamentsConfig',
     'registrations.apps.RegistrationsConfig',
     'stages.apps.StagesConfig',
+    'matches.apps.MatchesConfig',
 ]
 
 MIDDLEWARE = [
