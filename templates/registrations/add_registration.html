@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Adicionar Inscrição - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Cadastro de Inscrição</b>
+<br />
+<br />
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Situação</label>
+    <br />
+    {{ form.status }}
+    <br />
+    <br />
+    <label>Taxa</label>
+    <br />
+    {{ form.fee }}
+    <br />
+    <br />
+    <label>Comprovante</label>
+    <br />
+    {{ form.payment_proof }}
+    <br />
+    <br />
+    <label>Time</label>
+    <br />
+    {{ form.team }}
+    <br />
+    <br />
+    <label>Torneio</label>
+    <br />
+    {{ form.tournament }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+ 
+{% endblock body %}

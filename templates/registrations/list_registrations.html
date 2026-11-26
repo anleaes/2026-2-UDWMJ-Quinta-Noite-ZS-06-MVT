@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Inscrições - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'registrations:add_registration' %}">Cadastro de nova inscrição</a>
+<br />
+<br />
+<b>Lista de Inscrições</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data da inscrição</th>
+            <th>Situação</th>
+            <th>Taxa</th>
+            <th>Comprovante</th>
+            <th>Time</th>
+            <th>Torneio</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for registration in registrations %}
+        <tr>
+            <td>{{ registration.id }}</td>
+            <td>{{ registration.registered_at }}</td>
+            <td>{{ registration.get_status_display }}</td>
+            <td>{{ registration.fee }}</td>
+            <td>
+                    {% if registration.payment_proof %}<a href="{{ registration.payment_proof.url }}">{{ registration.payment_proof.url }}</a>{% endif %}
+                </td>
+            <td>{{ registration.team }}</td>
+            <td>{{ registration.tournament }}</td>
+            <td>
+                <a href="{% url 'registrations:edit_registration' registration.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'registrations:delete_registration' registration.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}
