@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Drafts - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'drafts:add_draft' %}">Cadastro de novo draft</a>
+<br />
+<br />
+<b>Lista de Drafts</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Jogo</th>
+            <th>Picks lado azul</th>
+            <th>Picks lado vermelho</th>
+            <th>Bans lado azul</th>
+            <th>Bans lado vermelho</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for draft in drafts %}
+        <tr>
+            <td>{{ draft.id }}</td>
+            <td>{{ draft.game }}</td>
+            <td>
+                    <ul>
+                    {% for item in draft.blue_picks.all %}
+                        <li>{{ item }}</li>
+                    {% empty %}
+                        <li>Sem itens</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            <td>
+                    <ul>
+                    {% for item in draft.red_picks.all %}
+                        <li>{{ item }}</li>
+                    {% empty %}
+                        <li>Sem itens</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            <td>
+                    <ul>
+                    {% for item in draft.blue_bans.all %}
+                        <li>{{ item }}</li>
+                    {% empty %}
+                        <li>Sem itens</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            <td>
+                    <ul>
+                    {% for item in draft.red_bans.all %}
+                        <li>{{ item }}</li>
+                    {% empty %}
+                        <li>Sem itens</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            <td>
+                <a href="{% url 'drafts:edit_draft' draft.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'drafts:delete_draft' draft.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}

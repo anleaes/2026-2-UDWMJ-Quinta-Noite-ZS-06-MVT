@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Adicionar Draft - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Cadastro de Draft</b>
+<br />
+<br />
+<form action="" method="POST">
+{% csrf_token %}
+    <label>Jogo</label>
+    <br />
+    {{ form.game }}
+    <br />
+    <br />
+    <label>Picks lado azul</label>
+    <br />
+    {{ form.blue_picks }}
+    <br />
+    <br />
+    <label>Picks lado vermelho</label>
+    <br />
+    {{ form.red_picks }}
+    <br />
+    <br />
+    <label>Bans lado azul</label>
+    <br />
+    {{ form.blue_bans }}
+    <br />
+    <br />
+    <label>Bans lado vermelho</label>
+    <br />
+    {{ form.red_bans }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+ 
+{% endblock body %}
