@@ -1,7 +1,7 @@
 from django import forms
-from .models import PlayerGameStats
+from .models import PlayerGameStat
 
-class PlayerGameStatsForm(forms.ModelForm):
+class PlayerGameStatForm(forms.ModelForm):
     class Meta:
-        model = PlayerGameStats
+        model = PlayerGameStat
         exclude = ()

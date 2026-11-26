@@ -3,7 +3,7 @@ from games.models import Game
 from players.models import Player
 from champions.models import Champion
 
-class PlayerGameStats(models.Model):
+class PlayerGameStat(models.Model):
     kills = models.IntegerField('Abates', default=0)
     deaths = models.IntegerField('Mortes', default=0)
     assists = models.IntegerField('Assistências', default=0)
