@@ -1,6 +1,6 @@
 from django.db import models
-from apps.matches.models import Match
-from apps.teams.models import Team
+from matches.models import Match
+from teams.models import Team
 
 class Game(models.Model):
     game_number = models.IntegerField('Número do jogo', default=1)
