@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Jogos - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+    <a href="{% url 'games:add_game' %}">Cadastro de novo jogo</a>
+<br />
+<br />
+<b>Lista de Jogos</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Numero do jogo</th>
+            <th>Duração (minutos)</th>
+            <th>Replay</th>
+            <th>Partida</th>
+            <th>Time lado azul</th>
+            <th>Time lado vermelho</th>
+            <th>Vencedor</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in games %}
+        <tr>
+            <td>{{ game.id }}</td>
+            <td>{{ game.game_number }}</td>
+            <td>{{ game.duration_minutes }}</td>
+            <td>
+                {% if game.replay_file %}<a href="{{ game.replay_file.url }}">{{ game.replay_file.url }}</a>{% endif %}
+            </td>
+            <td>{{ game.match }}</td>
+            <td>{{ game.blue_team }}</td>
+            <td>{{ game.red_team }}</td>
+            <td>{{ game.winner }}</td>
+            <td>
+                <a href="{% url 'games:edit_game' game.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'games:delete_game' game.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ 
+{% endblock body %}
