@@ -18,3 +18,5 @@ Wallet_campeonatoappdb/
 /apps/memberships/migrations/*
 /apps/tournaments/__pycache__/*
 /apps/tournaments/migrations/*
+/apps/registrations/__pycache__/*
+/apps/registrations/migrations/*
