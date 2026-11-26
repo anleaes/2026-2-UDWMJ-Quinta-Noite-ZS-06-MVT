@@ -26,6 +26,7 @@
             <th>Regulamento</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +49,9 @@
             </td>
             <td>
                 <a href="{% url 'tournaments:delete_tournament' tournament.id %}">Excluir</a>
+            </td>
+            <td>
+                <a href="{% url 'tournaments:standings' tournament.id %}">Classificação</a>
             </td>
         </tr>
         {% endfor %}
