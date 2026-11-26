@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Lista de Técnicos - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+
+<br />
+<a href="{% url 'coaches:add_coach' %}">Cadastro de novo técnico</a>
+<br />
+<br />
+<b>Lista de Técnicos</b>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data de Nascimento</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Nickname</th>
+            <th>Funcao</th>
+            <th>Salário</th>
+            <th>Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for coach in coaches %}
+        <tr>
+            <td>{{ coach.id }}</td>
+            <td>{{ coach.first_name }}</td>
+            <td>{{ coach.last_name }}</td>
+            <td>{{ coach.birth_date }}</td>
+            <td>{{ coach.phone }}</td>
+            <td>{{ coach.email }}</td>
+            <td>{{ coach.nickname }}</td>
+            <td>{{ coach.get_coach_role_display }}</td>
+            <td>{{ coach.salary }}</td>
+            </td>
+            <td>
+                <a href="{% url 'coaches:edit_coach' coach.id %}">Editar</a>
+            </td>
+            <td>
+                <a href="{% url 'coaches:delete_coach' coach.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

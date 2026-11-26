@@ -12,3 +12,5 @@ Wallet_campeonatoappdb/
 /apps/players/migrations/*
 /apps/teams/__pycache__/*
 /apps/teams/migrations/*
+/apps/coaches/__pycache__/*
+/apps/coaches/migrations/*
