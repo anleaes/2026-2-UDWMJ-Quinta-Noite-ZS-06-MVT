@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+ 
+    Adicionar Estatística do jogador - {{ block.super }}
+ 
+{% endblock title %}
+ 
+{% block body %}
+ 
+<br />
+<b>Cadastro de Estatística</b>
+<br />
+<br />
+<form action="" method="POST">
+    {% csrf_token %}
+    <label>Abates</label>
+    <br />
+    {{ form.kills }}
+    <br />
+    <br />
+    <label>Mortes</label>
+    <br />
+    {{ form.deaths }}
+    <br />
+    <br />
+    <label>Assistências</label>
+    <br />
+    {{ form.assists }}
+    <br />
+    <br />
+    <label>Jogo</label>
+    <br />
+    {{ form.game }}
+    <br />
+    <br />
+    <label>Jogador</label>
+    <br />
+    {{ form.player }}
+    <br />
+    <br />
+    <label>Campeão</label>
+    <br />
+    {{ form.champion }}
+    <br />
+    <br />
+    <button type="submit">Salvar</button>
+</form>
+
+{% endblock body %}
